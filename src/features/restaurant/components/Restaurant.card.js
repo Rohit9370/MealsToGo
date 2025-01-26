@@ -1,17 +1,23 @@
 import React from "react";
-import { View} from "react-native";
-import { Text } from "../../../components/typograpy/typograpy";
 import { SvgXml } from "react-native-svg";
+import { View } from "react-native";
 import { Spacer } from "../../../components/spacer/spacer.component";
+import {Text} from '../../../components/typograpy/typograpy'
 import star from "../../../../assets/star";
 import open from "../../../../assets/open";
-import { Icon,RestaurantCard,RestaurantCardCover,Address,Info,Rating,Section,SectionEnd
- } from '../components/Restaurant.card.style'
 
+import {
+  RestaurantCard,
+  RestaurantCardCover,
+  Info,
+  Section,
+  SectionEnd,
+  Rating,
+  Icon,
+  Address,
+} from "./Restaurant.card.style";
 
-
-
- const RestaurantInfoCard = ({ restaurant={}}) => {
+export const RestaurantInfoCard = ({ restaurant={} }) => {
   const {
     name = "Some Restaurant",
     icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
@@ -39,7 +45,7 @@ import { Icon,RestaurantCard,RestaurantCardCover,Address,Info,Rating,Section,Sec
           <Rating>
             {ratingArray.map((_, i) => (
               <SvgXml
-                key={`star-${placeId}-${i}`}
+                key={i}
                 xml={star}
                 width={20}
                 height={20}
@@ -63,4 +69,3 @@ import { Icon,RestaurantCard,RestaurantCardCover,Address,Info,Rating,Section,Sec
     </RestaurantCard>
   );
 };
-export default RestaurantCard
