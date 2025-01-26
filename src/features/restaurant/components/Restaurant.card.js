@@ -1,5 +1,6 @@
 import React from "react";
-import { View ,Text} from "react-native";
+import { View} from "react-native";
+import { Text } from "../../../components/typograpy/typograpy";
 import { SvgXml } from "react-native-svg";
 import { Spacer } from "../../../components/spacer/spacer.component";
 import star from "../../../../assets/star";
@@ -10,7 +11,7 @@ import { Icon,RestaurantCard,RestaurantCardCover,Address,Info,Rating,Section,Sec
 
 
 
-export const RestaurantInfoCard = ({ restaurant = {} }) => {
+ const RestaurantInfoCard = ({ restaurant={}}) => {
   const {
     name = "Some Restaurant",
     icon = "https://maps.gstatic.com/mapfiles/place_api/icons/v1/png_71/lodging-71.png",
@@ -62,3 +63,4 @@ export const RestaurantInfoCard = ({ restaurant = {} }) => {
     </RestaurantCard>
   );
 };
+export default RestaurantCard

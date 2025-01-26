@@ -1,42 +1,50 @@
-import {StatusBar} from 'react-native'
-import React from 'react'
-import styled from 'styled-components'
-import { Searchbar } from 'react-native-paper'
-import {RestaurantInfoCard} from '../components/Restaurant.card'
-
-
-
+import { FlatList, StatusBar } from "react-native";
+import React, { useContext } from "react";
+import styled from "styled-components";
+import { MainConatiner } from "../../../components/utility/safe-area-context";
+import { Searchbar } from "react-native-paper";
+import { RestaurantCard } from "../components/Restaurant.card";
+import { Spacer } from "../../../components/spacer/spacer.component";
+import { RestaurantContext } from "../../../services/restaurant/mocks/restaurant.context";
 
 const RestaurantScreen = () => {
-//constant Declare using Styled component
-const MainConatiner= styled.View`
-flex:1;
-paddingTop:${StatusBar.currentHeight}px;
-background-color:#f0f0f0;
-`
-const SearchBarContiner=styled.View`
-padding:10px;
-`
-const List=styled.View`
-flex:1;
-padding:16px;
-`
+  //constant Declare using Styled component
 
+  const SearchBarContiner = styled.View`
+    padding:10px;
+  `;
+  const RestaurantCardList = styled(FlatList).attrs({
+    contentContainerStyle: {
+      padding:14
+    },
+  })``
+  const { restaurants, isLoading, error } = useContext(RestaurantContext);
 
-
-//return
+  //return
   return (
     <MainConatiner>
-        <SearchBarContiner>
-        <Searchbar elevation={5} style={{borderRadius:0}}
-        placeholder='search'/>
-        </SearchBarContiner>
-        <List>
-            <RestaurantInfoCard />
-        </List>
+      <SearchBarContiner>
+        <Searchbar
+          elevation={5}
+          style={{ borderRadius: 0 }}
+          placeholder="search"
+        />
+      </SearchBarContiner>
+
+<RestaurantCardList
+          data={restaurants}
+          renderItem={({ item }) => {
+          console.log(restaurants)
+            return (
+                <Spacer position="bottom" size="large">            
+                    <RestaurantCard restaurant={item} />
+                </Spacer>
+            );
+          }}
+          keyExtractor={(item) => item.name}
+        />
     </MainConatiner>
-  )
+  );
+};
 
-}
-
-export default RestaurantScreen
+export default RestaurantScreen;
