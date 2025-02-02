@@ -9,8 +9,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { MainConatiner } from "./src/components/utility/safe-area-context";
 import { colors } from "./src/infrastructure/theme/colors";
 import { RestaurantcontextProvider } from "./src/services/restaurant/mocks/restaurant.context";
-
-
+import { LocationContextProvider} from "./src/services/restaurant/location/location.context.js";
 
 
 
@@ -52,9 +51,9 @@ const createScreenOptions = ({ route }) => {
 export default function App() { 
 
   return (
-
-    <ThemeProvider theme={theme}>
-      <RestaurantcontextProvider>
+    <ThemeProvider theme={theme}> 
+         <LocationContextProvider >
+      <RestaurantcontextProvider>  
       <NavigationContainer>
         <Tab.Navigator
           screenOptions={createScreenOptions}
@@ -83,6 +82,7 @@ export default function App() {
         </Tab.Navigator>
       </NavigationContainer>
       </RestaurantcontextProvider>
+      </LocationContextProvider>
     </ThemeProvider>
   );
 }
