@@ -1,4 +1,4 @@
-import { FlatList, StatusBar } from "react-native";
+import { FlatList, StatusBar, Touchable, TouchableOpacity } from "react-native";
 import React, { useContext } from "react";
 import styled from "styled-components";
 import { MainConatiner } from "../../../components/utility/safe-area-context";
@@ -8,9 +8,9 @@ import { Spacer } from "../../../components/spacer/spacer.component";
 import { RestaurantContext } from "../../../services/restaurant/mocks/restaurant.context";
 import Search from '../../restaurant/components/search'
 
-const RestaurantScreen = () => {
+const RestaurantScreen = ({navigation}) => {
+ 
   //constant Declare using Styled component
-
 
   const RestaurantCardList = styled(FlatList).attrs({
     contentContainerStyle: {
@@ -40,9 +40,16 @@ const RestaurantScreen = () => {
           data={restaurants}
           renderItem={({ item }) => {
             return (
+              <TouchableOpacity
+              onPress={()=>navigation.navigate('RestaurantDatailScreen'
+               ,{restaurant:item}
+              )
+            }
+              >
               <Spacer position="bottom" size="large">
                 <RestaurantInfoCard restaurant={item} />
               </Spacer>
+              </TouchableOpacity>
             );
           }}
           key={(item) => item.name}

@@ -11,25 +11,28 @@ export const LocationContextProvider = ({ children }) => {
 
     const onSearch = (searchKeyWord="") => {
         setLoading(true); 
-        console.log(searchKeyWord)
-        if(!searchKeyWord.trim().length)
-        {
-            //don't do anything
-            return;
-        }
-   
-        LocationRequest(searchKeyWord.toLowerCase())
-            .then(LocationTransform)
-            .then((result) => {
-                setLoading(false);
-                setLocation(result);
-                console.log(result)
-            })
-            .catch((error) => {
-                setLoading(false);
-                setError(error);
-            });
+        setKeyword(searchKeyWord);
     };
+    useEffect(()=>
+    {
+        if(!keyword.trim().length)
+            {
+                //don't do anything
+                return;
+            }  
+           
+            LocationRequest(keyword.trim().toLowerCase())
+                .then(LocationTransform)
+                .then((result) => {
+                    setLoading(false);
+                    setLocation(result);
+                    console.log(result)
+                })
+                .catch((error) => {
+                    setLoading(false);
+                    setError(error);
+                });
+    },[keyword])
 
     useEffect(() => {
         onSearch('');  // perform search on mount or when `keyword` changes

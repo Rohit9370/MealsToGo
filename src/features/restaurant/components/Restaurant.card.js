@@ -32,7 +32,7 @@ export const RestaurantInfoCard = ({ restaurant={} }) => {
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
-
+  
   return (
     <RestaurantCard elevation={2}>
       <View>
@@ -45,7 +45,7 @@ export const RestaurantInfoCard = ({ restaurant={} }) => {
           <Rating>
             {ratingArray.map((_, i) => (
               <SvgXml
-                key={i}
+                key={placeId+i}
                 xml={star}
                 width={20}
                 height={20}
