@@ -16,6 +16,7 @@ import {
   Icon,
   Address,
 } from "./Restaurant.card.style";
+import Favourite from "../../../components/favourite/favourite.component";
 
 export const RestaurantInfoCard = ({ restaurant={} }) => {
   const {
@@ -32,12 +33,14 @@ export const RestaurantInfoCard = ({ restaurant={} }) => {
   } = restaurant;
 
   const ratingArray = Array.from(new Array(Math.floor(rating)));
-  
+
   return (
-    <RestaurantCard elevation={2}>
+ 
+    <RestaurantCard elevation={2}> 
+     
       <View>
-        {/* <Favourite restaurant={restaurant} /> */}
         <RestaurantCardCover key={name} source={{ uri: photos[0] }} />
+        <Favourite restaurant={restaurant}/>
       </View>
       <Info>
         <Text variant="label">{name}</Text>
@@ -65,7 +68,9 @@ export const RestaurantInfoCard = ({ restaurant={} }) => {
           </SectionEnd>
         </Section>
         <Address>{address}</Address>
-      </Info>
+      </Info> 
+   
     </RestaurantCard>
+
   );
 };

@@ -12,6 +12,7 @@
   "dependencies": {
     "@expo-google-fonts/lato": "^0.2.3",
     "@expo-google-fonts/oswald": "^0.2.3",
+    "@react-native-async-storage/async-storage": "^2.1.1",
     "@react-navigation/bottom-tabs": "^7.2.0",
     "@react-navigation/native": "^7.0.14",
     "@react-navigation/stack": "^7.1.1",
@@ -19,10 +20,12 @@
     "babel-plugin-inline-import": "^3.0.0",
     "camelize": "^1.0.1",
     "capitalize": "^2.0.4",
-    "expo": "^52.0.28",
+    "expo": "^52.0.31",
     "expo-google-fonts": "^0.0.0",
     "expo-status-bar": "~2.0.1",
+    "firebase": "^11.3.0",
     "install": "^0.13.0",
+    "lottie-react-native": "^7.2.2",
     "metro-react-native-babel-preset": "^0.77.0",
     "react": "18.3.1",
     "react-native": "0.76.6",
@@ -34,6 +37,7 @@
     "react-native-safe-area-context": "^5.1.0",
     "react-native-screen": "^1.0.1",
     "react-native-svg": "^15.11.1",
+    "react-native-webview": "^13.13.2",
     "styled-components": "^6.1.14"
   },
   "devDependencies": {

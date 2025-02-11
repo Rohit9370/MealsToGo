@@ -1,25 +1,29 @@
-import React from 'react'
-import RestaurantScreen from '../../features/restaurant/screens/restaurant.screen'
-import {createStackNavigator} from '@react-navigation/stack'
-import { TransitionPresets } from '@react-navigation/stack'
-import RestaurantDatailScreen from '../../features/restaurant/screens/restaurant.datail.screen'
+import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
+import RestaurantScreen from "../../features/restaurant/screens/restaurant.screen";
+import RestaurantDetailScreen from "../../features/restaurant/screens/restaurant.datail.screen";
 
+const Stack = createStackNavigator();
 
-const AppNavigator=createStackNavigator();
 const RestaurantAppNavigation = () => {
   return (
-     <AppNavigator.Navigator screenOptions={{headerShown:false,
-        ...TransitionPresets.ModalSlideFromBottomIOS
-     }}>
-        <AppNavigator.Screen name="restaurant" component={RestaurantScreen}
-        />
-      <AppNavigator.Screen name="RestaurantDatailScreen" component={
-        RestaurantDatailScreen
-      }
-        />
-     </AppNavigator.Navigator>
-   
-  )
-}
+    <Stack.Navigator>
+      <Stack.Screen
+        name="RestaurantScreen"
+        component={RestaurantScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="RestaurantDetailScreen"
+        component={RestaurantDetailScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
+    </Stack.Navigator>
+  );
+};
 
-export default RestaurantAppNavigation
+export default RestaurantAppNavigation;

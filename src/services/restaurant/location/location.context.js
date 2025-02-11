@@ -26,7 +26,6 @@ export const LocationContextProvider = ({ children }) => {
                 .then((result) => {
                     setLoading(false);
                     setLocation(result);
-                    console.log(result)
                 })
                 .catch((error) => {
                     setLoading(false);
@@ -35,8 +34,8 @@ export const LocationContextProvider = ({ children }) => {
     },[keyword])
 
     useEffect(() => {
-        onSearch('');  // perform search on mount or when `keyword` changes
-    }, []); // re-run when `keyword` changes
+        onSearch(keyword);  // perform search on mount or when `keyword` changes
+    }, [keyword]); // re-run when `keyword` changes
 
     return (
         <LocationContext.Provider
@@ -44,7 +43,7 @@ export const LocationContextProvider = ({ children }) => {
                 isLoading,
                 error,
                 location,
-                keyword, // expose the setKeyword function to allow updates from child components
+                keyword,
                 search:onSearch,
                  
                    // expose the search function
